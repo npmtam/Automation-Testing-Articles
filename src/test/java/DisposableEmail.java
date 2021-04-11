@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -127,6 +128,10 @@ public class DisposableEmail {
         Assert.assertTrue(driver.findElement(By.xpath("//h1")).getText().equals("Welcome"));
     }
 
+    @AfterClass
+    public void afterTest(){
+        driver.quit();
+    }
     /**
      * Hàm sinh ra random number
      * @return randomNumber để gán vào email, tránh bị trùng lặp email khi chạy nhiều lần
